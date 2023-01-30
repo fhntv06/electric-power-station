@@ -1,5 +1,4 @@
 # Методы
-
 ## Общие методы
 ### Start()
 <blockquote>
@@ -22,7 +21,6 @@
 </blockquote>
 
 ## Методы для игровых объектов
-
 ### AddForce()
   <blockquote>
     <p>Метод добавляет "толчок" к выбранному объекту. Может применяться с методом <b><a href="#OnCollisionEnter">OnCollisionEnter()</a></b></p>
@@ -36,7 +34,6 @@
   <h4>Параметры:</h4>
   <pre>AddForce([Coorginates])</pre>
   <p><b>[Coorginates]</b> - координаты в направлении, которых будет толчок</p>
-
 
 ### Destroy()
   <blockquote>
@@ -136,3 +133,12 @@
   <b>Синтаксис:</b> 
   <pre><b>[GameObject].Translate(new Vector3(x, y, z) * [например домножение на ускорение или коэффициент]);</b></pre>
   <blockquote>Коэффициент будет изменять только те координаты, значение которых отлично от 0.</blockquote>
+
+### ProjectOnPlane()
+  <blockquote>
+    Возвращает проекцию переданного вектора на плоскость
+  </blockquote>
+  <b>Синтаксис:</b> 
+  <pre><b>Vector3.ProjectOnPlane([someVector3], [direction]);</b></pre>
+  <blockquote>Коэффициент будет изменять только те координаты, значение которых отлично от 0.</blockquote>
+

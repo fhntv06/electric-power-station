@@ -54,7 +54,7 @@ using System;
 
 ## Работа с физикой
 <blockquote>
-  <p>Лушче получать один раз данные при запуске сцены, которые нужно будет использовать много раз. Такое получение реализуется в методе <b>Awake()</b></p>
+  <p>Лучше получать один раз данные при запуске сцены, которые нужно будет использовать много раз. Такое получение реализуется в методе <b>Awake()</b></p>
   <p>Работа с физикой происходит в методе <b>FixedUpdate()</b>:</p>
   <pre>
     public float speed = 5f, hSpeed = 10f;  
@@ -78,6 +78,28 @@ using System;
    <pre>
     void Start () {
       Cursor.lockState = CursorLockMode.Locked;
-      Cursor.visible = fasle;
+      Cursor.visible = false;
     }
    </pre>
+</blockquote>
+
+## Работа с анимацией
+<blockquote>
+    <p><a href="https://docs.unity3d.com/ScriptReference/Animation.html">Документация</a></p>
+    <p>Получение компонента анимации</p>
+    <pre>
+        private void Start()
+        {
+            private Animation doorAnimation;
+            doorAnimation = GetComponent<Animation>();
+        }
+    </pre>
+    <p>Пример изменения свойста speed анимации</p>
+    <pre>
+        [component__animation]["[name__animation]"].speed = 0.5f;
+    </pre>
+    <p>Проигрывние анимации</p>
+    <pre>
+        [component__animation].Play("[name__animation]");
+    </pre>
+</blockquote>
