@@ -103,3 +103,9 @@ using System;
         [component__animation].Play("[name__animation]");
     </pre>
 </blockquote>
+
+## Работа с UI
+<blockquote>
+  <p>При использовании GetMouseButtonDown([number__button]) нарушается нажатие на кнопку. Для устранения этого можно добавить проверку, что курсор находится на кнопке - EventSystem.current.IsPointerOverGameObject()</p>
+</blockquote>
+

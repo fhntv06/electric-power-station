@@ -17,7 +17,7 @@ ModelImporter:
     second: "\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F|\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.002Action"
   - first:
       74: -7321540383208711805
-    second: "\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F|\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044FAction"
+    second: open_door_left_twice (1)
   - first:
       74: -7573935635216860779
     second: "\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.001|\u0412\u0435\u0440\u0445\u043D\u044F\u044FAction"
@@ -44,10 +44,25 @@ ModelImporter:
     second: "\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.002|\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.001Action"
   - first:
       74: 7008455756532806126
-    second: "\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.002|\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.002Action"
+    second: open_door_right_twice
   - first:
       74: 8989015580287076060
     second: "\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.002|\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044FAction"
+  - first:
+      74: -7046909470145413621
+    second: close_door_left_twice
+  - first:
+      74: 5771599796843943365
+    second: open_door_one
+  - first:
+      74: -725365258263784997
+    second: close_door_one
+  - first:
+      74: -6758610875030309229
+    second: close_door_right_twice
+  - first:
+      74: 633544056519473682
+    second: open_door_left_twice
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -75,7 +90,181 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: close_door_left_twice
+      takeName: "\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F|\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044FAction"
+      internalID: 0
+      firstFrame: 20
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: open_door_one
+      takeName: "\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.002|\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.002Action"
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: close_door_one
+      takeName: "\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.002|\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.002Action"
+      internalID: 0
+      firstFrame: 20
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: open_door_right_twice
+      takeName: "\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.001|\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.002Action"
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: close_door_right_twice
+      takeName: "\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.001|\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F.001Action"
+      internalID: 0
+      firstFrame: 20
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: open_door_left_twice
+      takeName: "\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044F|\u0414\u0432\u0435\u0440\u044C-\u043B\u0435\u0432\u0430\u044FAction"
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
