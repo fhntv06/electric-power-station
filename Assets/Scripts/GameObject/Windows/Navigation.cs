@@ -10,6 +10,7 @@ public class Navigation : MonoBehaviour
 
     public GlobalNavigation GlobalNavigation;
     public GlobalVariables GlobalVariables;
+
     public void OpenWindowOnlyAuth()
     {
         GlobalNavigation.CloseActiveWindow();
@@ -28,12 +29,18 @@ public class Navigation : MonoBehaviour
         GlobalNavigation.ReplaceGlobalVariablesWindow(openWindow);
     }
 
-    public void SetTestVerificationMode()
+    public void SetTestTaskMode()
     {
-        GlobalNavigation.ReplaceGlobalVariablesVerificationMode("test");
+        GlobalNavigation.ReplaceGlobalVariablesTaskMode("testMode");
     }
-    public void SetExamVerificationMode()
+    public void SetExamTaskMode()
     {
-        GlobalNavigation.ReplaceGlobalVariablesVerificationMode("exam");
+        GlobalNavigation.ReplaceGlobalVariablesTaskMode("examMode");
+    }
+
+    public void SetProgressTask()
+    {
+        // записываем данные в бэк + достаем данные из бэка и добавляем обновленные в LC
+        Debug.Log("AnswerForTask");
     }
 }

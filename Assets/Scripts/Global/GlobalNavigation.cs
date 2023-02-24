@@ -22,9 +22,9 @@ public class GlobalNavigation : MonoBehaviour
         GlobalVariables.ACTIVE_WINDOW = activeWindow;
     }
 
-    public void ReplaceGlobalVariablesVerificationMode(string verificationMode)
+    public void ReplaceGlobalVariablesTaskMode(string mode)
     {
-        GlobalVariables.VERIFICATION_MODE = verificationMode;
+        GlobalVariables.TASK_MODE = mode;
     }
 
     public void CloseActiveWindow()

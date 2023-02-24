@@ -13,7 +13,7 @@ public class GenerationCabel : MonoBehaviour
     void Generate()
     {
         Transform tp1 = transform;
-        Transform tp2 = transform.GetChild(0);
+        Transform tp2 = transform.Find("Cabel");
 
         Vector3 p1 = Vector3.zero;
         Vector3 p2 = tp2.position - tp1.position;

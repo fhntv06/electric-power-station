@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GlobalInit : MonoBehaviour
 {
-    GlobalVariables GlobalVariables;
+    public GlobalVariables GlobalVariables;
 
-    void Awake()
+    void Start()
     {
-
+        GlobalVariables.USER_FREEZE = false;
     }
 }
