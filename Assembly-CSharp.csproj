@@ -56,10 +56,24 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Example\SimpleSmoothMouseLook.cs" />
-    <Compile Include="Assets\Scripts\Example\PlayerHoverController.cs" />
-    <Compile Include="Assets\Scripts\GameObject\Player\MouseLook.cs" />
-    <Compile Include="Assets\Scripts\GameObject\Player\Movement.cs" />
+    <Compile Include="Assets\Scripts\Player\InputController.cs" />
+    <Compile Include="Assets\Scripts\Player\RaycastController.cs" />
+    <Compile Include="Assets\Scripts\GameObject\Windows\Authentification.cs" />
+    <Compile Include="Assets\Scripts\Animation\Door\Interaction.cs" />
+    <Compile Include="Assets\Scripts\Global\GlobalVariables.cs" />
+    <Compile Include="Assets\Scripts\Global\GlobalInit.cs" />
+    <Compile Include="Assets\Scripts\Scenario\EditorTaskController.cs" />
+    <Compile Include="Assets\Scripts\Player\MovePhysicController.cs" />
+    <Compile Include="Assets\Scripts\Global\GlobalInputController.cs" />
+    <Compile Include="Assets\Scripts\Player\CameraController.cs" />
+    <Compile Include="Assets\Scripts\GameObject\KRU\Telephone\TelephoneController.cs" />
+    <Compile Include="Assets\Scripts\Global\GlobalNavigation.cs" />
+    <Compile Include="Assets\Scripts\GameObject\Windows\Navigation.cs" />
+    <Compile Include="Assets\Scripts\Enviroment\Door\DoorAnimation.cs" />
+    <Compile Include="Assets\Scripts\GameObject\Generation cabel\GenerationCabel.cs" />
+    <Compile Include="Assets\Scripts\GameObject\ElectricObject\ShowOrbitObject.cs" />
+    <Compile Include="Assets\Scripts\Effects\Explosion.cs" />
+    <Compile Include="Assets\Scripts\Scenario\ScenarioOPN.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
