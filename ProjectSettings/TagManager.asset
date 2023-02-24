@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Door
+  - ElectObj
+  - DangerObject
+  - Phone
+  - NextStepScenarioOPN
+  - OnEndTaskScenarioOPN
+  - DeathObject
   layers:
   - Default
   - TransparentFX
@@ -11,7 +18,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
