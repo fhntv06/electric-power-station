@@ -58,22 +58,49 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\InputController.cs" />
     <Compile Include="Assets\Scripts\Player\RaycastController.cs" />
+    <Compile Include="Assets\Data\Instruction_and_Rules\TextObject.cs" />
+    <Compile Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_CustomWind.cs" />
     <Compile Include="Assets\Scripts\GameObject\Windows\Authentification.cs" />
+    <Compile Include="Assets\Scripts\ResponseServer\CardStruct.cs" />
     <Compile Include="Assets\Scripts\Animation\Door\Interaction.cs" />
     <Compile Include="Assets\Scripts\Global\GlobalVariables.cs" />
     <Compile Include="Assets\Scripts\Global\GlobalInit.cs" />
     <Compile Include="Assets\Scripts\Scenario\EditorTaskController.cs" />
     <Compile Include="Assets\Scripts\Player\MovePhysicController.cs" />
+    <Compile Include="Assets\Scripts\GameObject\Windows\SortingController.cs" />
     <Compile Include="Assets\Scripts\Global\GlobalInputController.cs" />
+    <Compile Include="Assets\Scripts\GameObject\Windows\AnswerController.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Player\RulesInfringementController.cs" />
     <Compile Include="Assets\Scripts\GameObject\KRU\Telephone\TelephoneController.cs" />
     <Compile Include="Assets\Scripts\Global\GlobalNavigation.cs" />
+    <Compile Include="Assets\Scripts\GameObject\Windows\ScrollBarController.cs" />
+    <Compile Include="Assets\Scripts\ResponseServer\ResponseStruct.cs" />
     <Compile Include="Assets\Scripts\GameObject\Windows\Navigation.cs" />
+    <Compile Include="Assets\Data\Errors\DataErrors.cs" />
     <Compile Include="Assets\Scripts\Enviroment\Door\DoorAnimation.cs" />
-    <Compile Include="Assets\Scripts\GameObject\Generation cabel\GenerationCabel.cs" />
+    <Compile Include="Assets\Scripts\GameObject\CreateGameObject\GenerationCabel.cs" />
+    <Compile Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_Utils.cs" />
     <Compile Include="Assets\Scripts\GameObject\ElectricObject\ShowOrbitObject.cs" />
     <Compile Include="Assets\Scripts\Effects\Explosion.cs" />
+    <Compile Include="Assets\Scripts\GameObject\Windows\ViewTextController.cs" />
+    <Compile Include="Assets\Scripts\GameObject\Windows\FormingListController.cs" />
     <Compile Include="Assets\Scripts\Scenario\ScenarioOPN.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />
+    <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Billboard_301.shader" />
+    <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Resources\CTI_Camera-DepthNormalTexture_301.shader" />
+    <None Include="Assets\Conifers [BOTD]\Conifers [BOTD] URP Readme.txt" />
+    <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Resources\CTI_Internal-DeferredShading.shader" />
+    <None Include="Assets\Conifers [BOTD]\Getting started.txt" />
+    <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\Includes\CTI_BillboardVertex_301.cginc" />
+    <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\Includes\CTI_TranslucentLighting_301.cginc" />
+    <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_301.shader" />
+    <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Resources\CTI_Internal-DeferredReflections.shader" />
+    <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\Includes\CTI_indirect.cginc" />
+    <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Leaves_301.shader" />
+    <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\Includes\CTI_Builtin4xTreeLibraryTumbling_301.cginc" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

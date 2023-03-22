@@ -11,6 +11,9 @@ TagManager:
   - NextStepScenarioOPN
   - OnEndTaskScenarioOPN
   - DeathObject
+  - Instruction
+  - Rule
+  - Task
   layers:
   - Default
   - TransparentFX
