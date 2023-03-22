@@ -5,9 +5,11 @@ using UnityEngine;
 public class GlobalInit : MonoBehaviour
 {
     public GlobalVariables GlobalVariables;
+    public GlobalNavigation GlobalNavigation;
+    public GameObject StartingWindow;
 
-    void Start()
+    private void Start()
     {
-        GlobalVariables.USER_FREEZE = false;
+        GlobalNavigation.AddWindowInHistory(StartingWindow);
     }
 }

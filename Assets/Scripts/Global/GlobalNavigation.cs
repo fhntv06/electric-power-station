@@ -11,13 +11,19 @@ public class GlobalNavigation : MonoBehaviour
     public void Back()
     {
         CloseActiveWindow();
-        GlobalVariables.PREV_WINDOW.SetActive(true);
 
-        ReplaceGlobalVariablesWindow(GlobalVariables.PREV_WINDOW);
+        int index = GlobalVariables.HISTORY_WINDOW.LastIndexOf(GlobalVariables.PREV_WINDOW);
+        print(index);
+        GlobalVariables.HISTORY_WINDOW.RemoveAt(index + 1);
+        GlobalVariables.PREV_WINDOW.SetActive(true);
+        GlobalVariables.ACTIVE_WINDOW = GlobalVariables.PREV_WINDOW;
+        GlobalVariables.PREV_WINDOW = GlobalVariables.HISTORY_WINDOW[index != 0 ? index - 1 : index];
+
     }
 
-    public void ReplaceGlobalVariablesWindow(GameObject activeWindow)
+    public void AddWindowInHistory(GameObject activeWindow)
     {
+        GlobalVariables.HISTORY_WINDOW.Add(activeWindow);
         GlobalVariables.PREV_WINDOW = GlobalVariables.ACTIVE_WINDOW;
         GlobalVariables.ACTIVE_WINDOW = activeWindow;
     }
@@ -30,10 +36,16 @@ public class GlobalNavigation : MonoBehaviour
     public void CloseActiveWindow()
     {
         GlobalVariables.ACTIVE_WINDOW.SetActive(false);
+
     }
 
     public void OpenNextWindow(GameObject window)
     {
         window.SetActive(true);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
