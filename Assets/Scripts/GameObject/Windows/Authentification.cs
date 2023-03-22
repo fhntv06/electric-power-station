@@ -12,16 +12,16 @@ public class Authentification : MonoBehaviour
     public GlobalVariables GlobalVariables;
     public GlobalNavigation GlobalNavigation;
 
-    public List<InputField> inputFieldsAuth;
-    public List<InputField> inputFieldsAuthRequest;
+    public List<InputField> inputFieldsAuth = new List<InputField>(0);
+    public List<InputField> inputFieldsAuthRequest = new List<InputField>(0);
     public GameObject RequestTextErrorAuth;
 
-    public List<InputField> inputFieldsReg;
-    public List<InputField> inputFieldsRegRequest;
+    public List<InputField> inputFieldsReg = new List<InputField>(0);
+    public List<InputField> inputFieldsRegRequest = new List<InputField>(0);
     public GameObject RequestTextErrorReg;
 
     string type;
-
+    string url = "http://substation/auth.php";
     bool emptyRequestField;
     public void Auth()
     {
@@ -53,16 +53,16 @@ public class Authentification : MonoBehaviour
             {
                 notError = false;
                 field.transform.Find("error").gameObject.SetActive(true);
-                // выводить текст "Поле не заполнено"
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
             } else
             {
-                // не работает ValidField
+                // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ValidField
                 // notError = ValidField(field.text, field.name);
                 field.transform.Find("error").gameObject.SetActive(false);
 
                 if (!notError)
                 {
-                    // выводить текст "введите ..."
+                    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ ..."
                     field.transform.Find("valid").gameObject.SetActive(true);
                 } else
                 {
@@ -98,7 +98,7 @@ public class Authentification : MonoBehaviour
     }
     private IEnumerator SendCoroutine()
     {
-        List<InputField> inputField;
+        List<InputField> inputField = new List<InputField>(0);
 
         WWWForm form = new WWWForm();
 
@@ -113,7 +113,7 @@ public class Authentification : MonoBehaviour
 
         form.AddField("type", type);
 
-        WWW www = new WWW("http://substation/auth.php", form);
+        WWW www = new WWW(url, form);
         yield return www;
 
         if (www.error != null)
@@ -129,7 +129,7 @@ public class Authentification : MonoBehaviour
             GlobalVariables.AUTH_USER = true;
             GlobalNavigation.CloseActiveWindow();
             GlobalNavigation.OpenNextWindow(GlobalVariables.LC_WINDOW);
-            GlobalNavigation.ReplaceGlobalVariablesWindow(GlobalVariables.LC_WINDOW);
+            GlobalNavigation.AddWindowInHistory(GlobalVariables.LC_WINDOW);
 
 
         } else

@@ -1,6 +1,11 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Networking;
+using System;
 
 // File includes methods for just action button
 public class Navigation : MonoBehaviour
@@ -11,36 +16,79 @@ public class Navigation : MonoBehaviour
     public GlobalNavigation GlobalNavigation;
     public GlobalVariables GlobalVariables;
 
+    string urlData = "http://substation/data.php";
+
+    public void OpenScene()
+    {
+        int id = Int32.Parse(gameObject.name[gameObject.name.Length - 1].ToString());
+        print(id);
+        foreach (Transform child in GameObject.Find("Substation").transform)
+            child.gameObject.SetActive(true);
+
+        GlobalVariables.TASKID = id;
+        GameObject.Find("CameraWindow").SetActive(false);
+        GlobalNavigation.CloseActiveWindow();
+    }
+    public void CloseScene()
+    {
+        GameObject.Find("Substation").SetActive(false);
+        GameObject.Find("CameraWindow").SetActive(true);
+    }
     public void OpenWindowOnlyAuth()
     {
-        GlobalNavigation.CloseActiveWindow();
+        GameObject window;
 
-        GameObject window = GlobalVariables.AUTH_USER ? openWindow : AuthAndRegWindow;
+        if (GlobalVariables.AUTH_USER == false)
+        {
+            window = AuthAndRegWindow;
+            GlobalVariables.HISTORY_WINDOW.Clear();
+        }
+        else
+        {
+            window = openWindow;
+        }
 
-        GlobalNavigation.ReplaceGlobalVariablesWindow(window);
-        window.SetActive(true);
+        OpenWindow(window);
     }
 
     public void OpenTargetWindow()
     {
-        GlobalNavigation.CloseActiveWindow();
-        openWindow.SetActive(true);
+        OpenWindow(openWindow);
+    }
 
-        GlobalNavigation.ReplaceGlobalVariablesWindow(openWindow);
+    void OpenWindow(GameObject window)
+    {
+        GlobalNavigation.CloseActiveWindow();
+
+        GlobalNavigation.AddWindowInHistory(window);
+        window.SetActive(true);
+    }
+    
+
+    public void SetMode(string mode)
+    {
+        GlobalNavigation.ReplaceGlobalVariablesTaskMode(mode);
     }
 
     public void SetTestTaskMode()
     {
-        GlobalNavigation.ReplaceGlobalVariablesTaskMode("testMode");
+        GlobalNavigation.ReplaceGlobalVariablesTaskMode(GlobalVariables.TEST_MODE);
     }
     public void SetExamTaskMode()
     {
-        GlobalNavigation.ReplaceGlobalVariablesTaskMode("examMode");
+        GlobalNavigation.ReplaceGlobalVariablesTaskMode(GlobalVariables.EXAM_MODE);
     }
 
     public void SetProgressTask()
     {
-        // записываем данные в бэк + достаем данные из бэка и добавляем обновленные в LC
-        Debug.Log("AnswerForTask");
+        StartCoroutine(PassTask());
+    }
+
+    public IEnumerator PassTask()
+    {
+        string url = urlData + "?action=post&type=tasks&field=pass&value=1&id=" + GlobalVariables.TASKID;
+        print(url);
+        UnityWebRequest request = UnityWebRequest.Get(url);
+        yield return request.SendWebRequest();
     }
 }
