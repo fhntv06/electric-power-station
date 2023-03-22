@@ -42,20 +42,21 @@ public class InputController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        CheckEntry(other.tag, true);
+        CheckEntry(other.tag, true, other);
     }
 
     void OnTriggerExit(Collider other)
     {
-        CheckEntry(other.tag, false);
+        CheckEntry(other.tag, false, other);
     }
 
-    void CheckEntry(string tag, bool state)
+    void CheckEntry(string tag, bool state, Collider collider)
     {
         switch (tag)
         {
             case "DangerObject":
                 GlobalVariables.WARNING_DEATH_WINDOW.SetActive(state);
+                if (GlobalVariables.VERIFICATION_MODE == "") collider.GetComponent<RulesInfringementController>().EntranceInDangerZone(state);
                 break;
             case "DeathObject":
                 GlobalVariables.DEATH_WINDOW.SetActive(state);

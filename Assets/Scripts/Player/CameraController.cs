@@ -9,6 +9,8 @@ public class CameraController : MonoBehaviour
 
     public Transform Player;
     public float SENSIVITY_MOUSE = 100f;
+    public float borderRotateCameraUp = 50f;
+    public float borderRotateCameraDown = -50f;
 
     float mouseX;
     float mouseY;
@@ -20,8 +22,8 @@ public class CameraController : MonoBehaviour
             mouseX = Input.GetAxis("Mouse X") * SENSIVITY_MOUSE * Time.deltaTime;
             mouseY = Input.GetAxis("Mouse Y") * SENSIVITY_MOUSE * Time.deltaTime;
 
-            Player.Rotate(mouseX * new Vector3(0, 1, 0));
             transform.Rotate(-mouseY * new Vector3(1, 0, 0));
+            Player.Rotate(mouseX * new Vector3(0, 1, 0));
         }
     }
 }

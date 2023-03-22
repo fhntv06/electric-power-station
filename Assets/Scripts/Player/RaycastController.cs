@@ -40,7 +40,8 @@ public class RaycastController : MonoBehaviour
 
                     if (ScenarioOPN.scenarioOPNPhoneBlockedStep == 2)
                     {
-                        message.text = "Сообщить о задании";
+                        message.text = "Сообщить о результатах обхода";
+                        // вкл окно с выбором ответа
                         if (Input.GetKeyUp(KeyCode.F)) hit.collider.GetComponent<Navigation>().SetProgressTask();
                     }
                     break;
