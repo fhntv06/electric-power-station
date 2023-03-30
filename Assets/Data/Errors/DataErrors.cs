@@ -7,6 +7,9 @@ public class DataErrors : ScriptableObject
 {
     // Type error 1:
     public string typeOne = "Нарушено правило!";
+    public int ball = 1;
 
     public string Error { get => typeOne; }
+    public int takeBalls { get => ball; }
+
 }

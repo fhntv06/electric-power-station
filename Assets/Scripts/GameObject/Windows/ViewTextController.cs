@@ -9,7 +9,7 @@ public class ViewTextController : MonoBehaviour
 {
     public Transform content;
 
-    public TextObject TextObject;
+    public DataRule DataRule;
 
     // пример prefab titleBig
     public GameObject prefabTitleBig;
@@ -28,6 +28,7 @@ public class ViewTextController : MonoBehaviour
     void FormingText(string text, GameObject prefab)
     {
         GameObject newText = Instantiate(prefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+        newText.transform.localScale = new Vector3(1, 1, 1);
         newText.GetComponent<Text>().text = text.Replace(replaceHim, endLine);
         newText.transform.SetParent(content);
     }
@@ -37,7 +38,7 @@ public class ViewTextController : MonoBehaviour
         foreach (Transform text in content)
             Destroy(text.gameObject);
 
-        FormingText(TextObject.titleBig, prefabTitleBig);
+        FormingText(DataRule.titleBig, prefabTitleBig);
 
         int count = 0;
         foreach (Transform item in toggle.Find("Btns"))
@@ -47,19 +48,19 @@ public class ViewTextController : MonoBehaviour
                 item.gameObject.SetActive(true);
 
                 if (item.name.StartsWith("To"))
-                    item.name = "To_tasks-" + TextObject.id;
+                    item.name = "To_tasks-" + DataRule.id;
 
                 if (item.name.StartsWith("Set"))
-                    item.name = "Set_pass-" + TextObject.id;
+                    item.name = "Set_pass-" + DataRule.id;
             }
 
             count++;
         }
 
-        for (int i = 0; i < TextObject.titlesSmall.Length; i++)
+        for (int i = 0; i < DataRule.titlesSmall.Length; i++)
         {
-            FormingText(TextObject.titlesSmall[i], prefabTitleSmall);
-            FormingText(TextObject.paragraphs[i], prefabText);
+            FormingText(DataRule.titlesSmall[i], prefabTitleSmall);
+            FormingText(DataRule.paragraphs[i], prefabText);
         }
     }
 }

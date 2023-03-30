@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 730f1fecd75b7344aa2274bc16c6436a, type: 3}
   m_Name: PTEES
   m_EditorClassIdentifier: 
-  id: 1
+  id: 0
   titleBig: "\u041F\u0422\u042D\u042D\u0421"
   titlesSmall:
   - "\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A 1"

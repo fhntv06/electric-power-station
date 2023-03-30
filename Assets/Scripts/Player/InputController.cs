@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class InputController : MonoBehaviour
@@ -14,6 +15,15 @@ public class InputController : MonoBehaviour
     private KeyCode keyBackMove = GlobalInputController.back;
     private KeyCode keySpeedUpMove = GlobalInputController.speedUp;
     private KeyCode keyActivePauseWindow = GlobalInputController.activePauseWindow;
+
+    /*
+    private string keyForwardMove = GlobalInputController.forward;
+    private string keyRightMove = GlobalInputController.right;
+    private string keyLeftMove = GlobalInputController.left;
+    private string keyBackMove = GlobalInputController.back;
+    private string keySpeedUpMove = GlobalInputController.speedUp;
+    private string keyActivePauseWindow = GlobalInputController.activePauseWindow; 
+    */
 
     void Update()
     {
@@ -55,18 +65,10 @@ public class InputController : MonoBehaviour
         switch (tag)
         {
             case "DangerObject":
-                GlobalVariables.WARNING_DEATH_WINDOW.SetActive(state);
-                if (GlobalVariables.VERIFICATION_MODE == "") collider.GetComponent<RulesInfringementController>().EntranceInDangerZone(state);
+                ActionDangerObject(collider, state);
                 break;
             case "DeathObject":
-                GlobalVariables.DEATH_WINDOW.SetActive(state);
-                GlobalVariables.DEATH_WINDOW.transform.Find("Btn_" + GlobalVariables.TASK_MODE).gameObject.SetActive(state);
-
-                GlobalVariables.USER_IN_DEATH_ZONE = state;
-                if (GlobalVariables.USER_IN_DEATH_ZONE)
-                {
-                    ReplaceUserFreese(true);
-                }
+                ActionDeathObject(state);
                 break;
 
             case "OnEndTaskScenarioOPN":
@@ -83,5 +85,21 @@ public class InputController : MonoBehaviour
     {
         GlobalVariables.USER_FREEZE = state;
         print(GlobalVariables.USER_FREEZE);
+    }
+
+    void ActionDangerObject(Collider collider, bool state)
+    {
+        GlobalVariables.WARNING_DEATH_WINDOW.SetActive(state);
+        collider.GetComponent<RulesInfringementController>().EntranceInDangerZone(state);
+    }
+
+    void ActionDeathObject(bool state)
+    {
+        GlobalVariables.DEATH_WINDOW.SetActive(state);
+        GlobalVariables.DEATH_WINDOW.transform.Find("Btn_" + GlobalVariables.TASK_MODE).gameObject.SetActive(state);
+
+        GlobalVariables.USER_IN_DEATH_ZONE = state;
+        if (state) // if state == true
+            ReplaceUserFreese(state);
     }
 }

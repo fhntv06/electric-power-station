@@ -4,26 +4,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
-using UnityEditor.PackageManager.Requests;
+using UnityEngine.EventSystems;
 
 public class FormingListController : MonoBehaviour
 {
+    public GlobalVariables GlobalVariables;
+    public MethodsResponse MethodsResponse;
     // prefabs Instruction and Rules
     public GameObject prefabCard;
 
     public GameObject message;
     public GameObject preloader;
 
-    public Transform contentTextView;
-    public Transform toggle;
     public Transform parentCard;
+    public Transform parentButtons;
 
-    public GameObject openWindow;
-    public GlobalNavigation GlobalNavigation;
+    public Transform toggle;
+
     public SortingController SortingController;
-
-    public List<TextObject> listObjects = new List<TextObject>(0);
-    TextObject dataObject;
 
     public string whatDataType;
     string urlData = "http://substation/data.php";
@@ -44,53 +42,78 @@ public class FormingListController : MonoBehaviour
         foreach (Transform card in parentCard)
             Destroy(card.gameObject);
 
-        StartCoroutine(GetCardCoroutine());
+        GetCardCoroutine();
     }
     public void postPassInstruction()
     {
-        StartCoroutine(PostPassInstruction());
-    }
-    void FormingBtnTextViewer(GameObject newCard, int count)
-    {
-        newCard.transform.Find("BtnView").GetComponent<ViewTextController>().content = contentTextView;
-        newCard.transform.Find("BtnView").GetComponent<ViewTextController>().toggle = toggle;
-        newCard.transform.Find("BtnView").GetComponent<ViewTextController>().TextObject = listObjects[count];
+        string btnName = "";
+        foreach (Transform child in toggle.Find("Btns"))
+            if (child.name.StartsWith("Set_pass-"))
+                btnName = child.name;
 
-        newCard.transform.Find("BtnView").GetComponent<Navigation>().openWindow = openWindow;
-        newCard.transform.Find("BtnView").GetComponent<Navigation>().GlobalNavigation = GlobalNavigation;
+        int indexSeparatorName = btnName.IndexOf("_") + 1;
+        int indexSeparatorId = btnName.IndexOf("-");
+        string field = btnName.Substring(indexSeparatorName, indexSeparatorId - indexSeparatorName);
+        string id = btnName.Substring(indexSeparatorId + 1);
+        string otherParams = "field=" + field + "&value=" + "1&" + "id=" + id;
+
+        StartCoroutine(MethodsResponse.PostCommon(urlData, whatDataType, otherParams));
+
+        getData();
     }
-    void FormingCardTextViewer(Response response)
+    void FormingBtnTextViewer(int count)
+    {
+        parentButtons.GetComponent<ViewTextController>().DataRule = GlobalVariables.DATA_INSTRUCTION_AND_RULE[count];
+
+        foreach (Transform child in parentButtons)
+            child.GetComponent<Button>().interactable = true;
+    }
+
+    void FormingCardResponse(Response response)
     {
         int count = 0;
         foreach (CardStruct card in response.cards)
         {
             GameObject newCard = Instantiate(prefabCard, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+            Text Title = newCard.transform.Find("Title").GetComponent<Text>();
+            Transform BtnView = newCard.transform.Find("BtnView");
 
             if (card.pass != true)
                 newCard.transform.Find("Pass").GetComponent<Image>().enabled = false;
 
-            newCard.tag = card.tag;
 
-            newCard.transform.Find("Title").GetComponent<Text>().text = card.title;
-
-            FormingBtnTextViewer(newCard, count);
+            newCard.tag = GlobalVariables.DATA_TASKS[count].tag;
+            newCard.name = "Task_" + GlobalVariables.DATA_TASKS[count].id;
+            Title.text = GlobalVariables.DATA_TASKS[count].title;
+            BtnView.GetComponent<FormingListController>().parentButtons = parentButtons;
+            BtnView.GetComponent<FormingListController>().GlobalVariables = GlobalVariables;
+            BtnView.GetComponent<Button>().onClick.AddListener(delegate { void wrapperMethod() { ReadId(); } });
 
             newCard.transform.SetParent(parentCard);
+
             count++;
         }
 
-        SortingController.FormingList();
+        if (SortingController != null)
+            SortingController.FormingList();
     }
 
-    public IEnumerator GetCardCoroutine()
+    void ReadId()
     {
+        string name = gameObject.transform.parent.name;
+        int indexId = name.IndexOf("_");
+        string id = name.Substring(indexId + 1);
+        FormingBtnTextViewer(Convert.ToInt32(id));
 
-        string url = urlData + "?action=get" + "&type=" + whatDataType;
-        UnityWebRequest request = UnityWebRequest.Get(url);
 
-        request.SetRequestHeader("Content-Type", "application/json");
-        yield return request.SendWebRequest();
-        yield return new WaitForSeconds(.1f);
+        foreach (Transform child in parentButtons)
+            child.GetComponent<Button>().interactable = true;
+    }
+
+    public void GetCardCoroutine()
+    {
+        UnityWebRequest request = (UnityWebRequest)MethodsResponse.GetCommon(urlData, whatDataType);
+
         preloader.SetActive(false);
 
         if (request.result == UnityWebRequest.Result.ConnectionError)
@@ -98,9 +121,6 @@ public class FormingListController : MonoBehaviour
             message.SetActive(true);
             message.GetComponent<Text>().text = errorText;
             message.GetComponent<Text>().color = errorColor;
-
-            yield return 0;
-
         } else
         {
             try
@@ -115,7 +135,7 @@ public class FormingListController : MonoBehaviour
                 else
                 {
                     message.SetActive(false);
-                    FormingCardTextViewer(response);
+                    FormingCardResponse(response);
                 }
             }
             catch (Exception ex)
@@ -123,24 +143,5 @@ public class FormingListController : MonoBehaviour
                 message.GetComponent<Text>().text = errorTypeDataText;
             }
         }
-    }
-
-    public IEnumerator PostPassInstruction()
-    {
-        string btnName = "";
-        foreach (Transform child in toggle.Find("Btns"))
-            if (child.name.StartsWith("Set_pass-"))
-                btnName = child.name;
-
-        int indexSeparatorName = btnName.IndexOf("_") + 1;
-        int indexSeparatorId = btnName.IndexOf("-");
-        string field = btnName.Substring(indexSeparatorName, indexSeparatorId - indexSeparatorName);
-        string id = btnName.Substring(indexSeparatorId + 1);
-
-        string url = urlData + "?action=post&type=" + whatDataType + "&field=" + field + "&value=1" + "&id=" + id;
-        UnityWebRequest request = UnityWebRequest.Get(url);
-        yield return request.SendWebRequest();
-
-        getData();
     }
 }

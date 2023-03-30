@@ -1,9 +1,5 @@
-using JetBrains.Annotations;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
 
@@ -20,12 +16,14 @@ public class Navigation : MonoBehaviour
 
     public void OpenScene()
     {
-        int id = Int32.Parse(gameObject.name[gameObject.name.Length - 1].ToString());
-        print(id);
+        int id = System.Convert.ToInt32((gameObject.name[gameObject.name.Length - 1].ToString()));
+
+        // SceneManager.LoadScene("Substation");
         foreach (Transform child in GameObject.Find("Substation").transform)
             child.gameObject.SetActive(true);
 
         GlobalVariables.TASKID = id;
+        GlobalVariables.USER_BALLS = GlobalVariables.DATA_TASKS[id].balls;
         GameObject.Find("CameraWindow").SetActive(false);
         GlobalNavigation.CloseActiveWindow();
     }

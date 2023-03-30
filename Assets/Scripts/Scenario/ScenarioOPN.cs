@@ -28,7 +28,6 @@ public class ScenarioOPN : MonoBehaviour
     float delayShowWindowTransition = 5;
     bool delayActive = false;
 
-    bool active = false;
     public static int scenarioOPNPhoneBlockedStep = 0;
     void Update()
     {
@@ -37,9 +36,7 @@ public class ScenarioOPN : MonoBehaviour
             delayShowWindowTransition -= Time.deltaTime;
 
             if (delayShowWindowTransition <= 0)
-            {
                 ToggleStateWindowTransition(false);
-            }
         }
     }
     public void ToggleStateWindowTransition(bool state)

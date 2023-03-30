@@ -13,7 +13,7 @@ public class GlobalNavigation : MonoBehaviour
         CloseActiveWindow();
 
         int index = GlobalVariables.HISTORY_WINDOW.LastIndexOf(GlobalVariables.PREV_WINDOW);
-        print(index);
+
         GlobalVariables.HISTORY_WINDOW.RemoveAt(index + 1);
         GlobalVariables.PREV_WINDOW.SetActive(true);
         GlobalVariables.ACTIVE_WINDOW = GlobalVariables.PREV_WINDOW;

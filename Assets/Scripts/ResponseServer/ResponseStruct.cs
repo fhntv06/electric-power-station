@@ -4,4 +4,5 @@ using System;
 public struct Response
 {
     public CardStruct[] cards;
+    public DataRule[] rule;
 }

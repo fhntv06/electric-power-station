@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,9 +8,10 @@ public class GlobalVariables : MonoBehaviour
     public int TASKID;
     public string VERIFICATION_MODE = "";
 
-    public int USER_BALLS = 0;
-    public bool USER_FREEZE = true;
-    public bool USER_IN_DEATH_ZONE = false;
+    public int USER_ID;
+    public int USER_BALLS;
+    public bool USER_FREEZE;
+    public bool USER_IN_DEATH_ZONE;
 
     // Global variables window
     public List<GameObject> HISTORY_WINDOW = new List<GameObject>(0);
@@ -27,4 +27,9 @@ public class GlobalVariables : MonoBehaviour
     public string TASK_MODE;
     public string TEST_MODE = "testMode";
     public string EXAM_MODE = "examMode";
+
+    // Global data
+    public List<DataTasks> DATA_TASKS = new List<DataTasks>(0);
+    public List<DataRule> DATA_INSTRUCTION_AND_RULE = new List<DataRule>(0);
+
 }
