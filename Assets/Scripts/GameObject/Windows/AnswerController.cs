@@ -26,7 +26,7 @@ public class AnswerController : MonoBehaviour
         // подсветка ответов
         if (gameObject.name.EndsWith(trueAnswer))
             color = green;
-            StartCorrutines();
+            StartCoroutine(TheEndTask());
 
 
         if (gameObject.name.EndsWith(falseAnswer))
@@ -37,11 +37,6 @@ public class AnswerController : MonoBehaviour
     }
 
     // метод для родителя кнопок
-    public void StartCorrutines()
-    {
-        StartCoroutine(TheEndTask());
-
-    }
     IEnumerator TheEndTask()
     {
         yield return new WaitForSeconds(2);

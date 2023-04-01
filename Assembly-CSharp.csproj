@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\ResponseServer\CardStruct.cs" />
     <Compile Include="Assets\Scripts\Animation\Door\Interaction.cs" />
     <Compile Include="Assets\Scripts\Global\GlobalVariables.cs" />
+    <Compile Include="Assets\Scripts\ResponseServer\MethodsResponse.cs" />
     <Compile Include="Assets\Scripts\Global\GlobalInit.cs" />
     <Compile Include="Assets\Scripts\Scenario\EditorTaskController.cs" />
     <Compile Include="Assets\Scripts\Player\MovePhysicController.cs" />
@@ -79,7 +80,7 @@
     <Compile Include="Assets\Scripts\GameObject\Windows\Navigation.cs" />
     <Compile Include="Assets\Data\Errors\DataErrors.cs" />
     <Compile Include="Assets\Scripts\Enviroment\Door\DoorAnimation.cs" />
-    <Compile Include="Assets\Scripts\GameObject\Windows\Settings.cs" />
+    <Compile Include="Assets\Scripts\Settings\SettingCommon.cs" />
     <Compile Include="Assets\Data\Tasks\DataTasks.cs" />
     <Compile Include="Assets\Scripts\GameObject\CreateGameObject\GenerationCabel.cs" />
     <Compile Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_Utils.cs" />
@@ -88,7 +89,8 @@
     <Compile Include="Assets\Scripts\GameObject\Windows\ViewTextController.cs" />
     <Compile Include="Assets\Scripts\GameObject\Windows\FormingListController.cs" />
     <Compile Include="Assets\Scripts\Scenario\ScenarioOPN.cs" />
-    <Compile Include="Assets\Scripts\ResponseServer\MethodsResponse.cs" />
+    <Compile Include="Assets\Scripts\Settings\SettingActions.cs" />
+    <Compile Include="Assets\Scripts\Global\GlobalSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />

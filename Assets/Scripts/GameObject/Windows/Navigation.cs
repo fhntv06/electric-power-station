@@ -23,7 +23,8 @@ public class Navigation : MonoBehaviour
             child.gameObject.SetActive(true);
 
         GlobalVariables.TASKID = id;
-        GlobalVariables.USER_BALLS = GlobalVariables.DATA_TASKS[id].balls;
+        GlobalVariables.TASK_BALLS = GlobalVariables.DATA_TASKS[id].balls;
+        GlobalVariables.USER_BALLS = GlobalVariables.TASK_BALLS; // in zone minus ball
         GameObject.Find("CameraWindow").SetActive(false);
         GlobalNavigation.CloseActiveWindow();
     }

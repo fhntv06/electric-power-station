@@ -126,7 +126,7 @@ public class FormingListController : MonoBehaviour
             try
             {
                 Response response = JsonUtility.FromJson<Response>(request.downloadHandler.text);
-
+                print(response);
                 if (response.cards.Length == 0)
                 {
                     message.SetActive(true);

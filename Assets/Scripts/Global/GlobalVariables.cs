@@ -9,7 +9,8 @@ public class GlobalVariables : MonoBehaviour
     public string VERIFICATION_MODE = "";
 
     public int USER_ID;
-    public int USER_BALLS;
+    public float USER_BALLS;
+    public float USER_MAX_AWARD = 5;
     public bool USER_FREEZE;
     public bool USER_IN_DEATH_ZONE;
 
@@ -27,6 +28,8 @@ public class GlobalVariables : MonoBehaviour
     public string TASK_MODE;
     public string TEST_MODE = "testMode";
     public string EXAM_MODE = "examMode";
+    public float TASK_BALLS;
+
 
     // Global data
     public List<DataTasks> DATA_TASKS = new List<DataTasks>(0);
