@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 9038523594577764729}
   - component: {fileID: 5265004642059582753}
   - component: {fileID: 1769391324862473911}
+  - component: {fileID: 3425844225559566333}
   m_Layer: 0
   m_Name: BtnView
   m_TagString: Untagged
@@ -415,6 +416,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3425844225559566333}
+        m_TargetAssemblyTypeName: FormingListController, Assembly-CSharp
+        m_MethodName: ReadId
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 5265004642059582753}
         m_TargetAssemblyTypeName: ViewTextController, Assembly-CSharp
         m_MethodName: InsertDataContent
@@ -440,7 +453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 0}
-  TextObject: {fileID: 0}
+  DataRule: {fileID: 0}
   prefabTitleBig: {fileID: 2448783427844477280, guid: 1648773763825924bb0dc88052844241, type: 3}
   prefabTitleSmall: {fileID: 4601624272724825262, guid: 041ce009b735ede448f9f0099e6c1a11, type: 3}
   prefabText: {fileID: 5434976100339379206, guid: 1ae02c969dd0f144f976d1e1c175b6ac, type: 3}
@@ -457,10 +470,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fe91b324fdb7a478f685465ba525f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openWindow: {fileID: 3746290946279240114, guid: 59eddecc50867ce4c8ce9572af731cf4, type: 3}
+  openWindow: {fileID: 0}
   AuthAndRegWindow: {fileID: 0}
   GlobalNavigation: {fileID: 0}
   GlobalVariables: {fileID: 0}
+--- !u!114 &3425844225559566333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868881088689821713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee0637bd41276e478fa227617b9b5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalVariables: {fileID: 0}
+  GlobalNavigation: {fileID: 0}
+  MethodsResponse: {fileID: 0}
+  prefabCard: {fileID: 0}
+  message: {fileID: 0}
+  preloader: {fileID: 0}
+  parentCard: {fileID: 0}
+  parentButtons: {fileID: 0}
+  toggle: {fileID: 0}
+  SortingController: {fileID: 0}
+  TextViewWindow: {fileID: 0}
+  whatDataType: 
+  emptyText: 
+  errorText: 
+  errorTypeDataText: 
 --- !u!1 &6313786062775518538
 GameObject:
   m_ObjectHideFlags: 0
