@@ -5,9 +5,9 @@ using System;
 public struct CardStruct
 {
     public int id;
-    public string title;
+    public int task;
     public bool pass;
     public bool type;
     public int balls;
-    public string tag;
+    public int award;
 }

@@ -7,15 +7,10 @@ public class ScenarioOPN : MonoBehaviour
 {
     public GlobalVariables GlobalVariables;
 
-    public Transform cabel;
-    public Transform cabelChildFront;
-    public Transform cabelChildBack;
-
-    public Vector3 cabelPositionNew;
-    public Vector3 cabelChildPositionNew;
-    public Vector3 sparksPositionNew;
-
     public GameObject sparks;
+    public Transform cabelPoint;
+    public Vector3 newCabelPointPosition;
+
     public GameObject windowTransition;
     public GameObject windowDeath;
     public GameObject windowWarning;
@@ -25,33 +20,30 @@ public class ScenarioOPN : MonoBehaviour
     public GameObject DangerObject;
     public GameObject DeathObject;
 
-    float delayShowWindowTransition = 5;
-    bool delayActive = false;
+    public AudioSource WarningSignaling;
 
     public static int scenarioOPNPhoneBlockedStep = 0;
-    void Update()
-    {
-        if (delayActive)
-        {
-            delayShowWindowTransition -= Time.deltaTime;
 
-            if (delayShowWindowTransition <= 0)
-                ToggleStateWindowTransition(false);
-        }
+    public List<GameObject> gameObjectsOnInStart = new List<GameObject>(2);
+
+    public List<Renderer> indicators = new List<Renderer>(2);
+    public Material indicatorOn;
+
+    void Start()
+    {
+        foreach (GameObject gameobject in gameObjectsOnInStart)
+            gameobject.SetActive(true);
     }
+
     public void ToggleStateWindowTransition(bool state)
     {
         windowTransition.SetActive(state);
-        delayActive = state;
         GlobalVariables.USER_FREEZE = state;
-        scenarioOPNPhoneBlockedStep = 2;
-        DangerObject.SetActive(true);
-        DeathObject.SetActive(true);
     }
 
     public void NextStep()
     {
-        ToggleStateWindowTransition(true);
+        StartCoroutine(Delay());
         ChangePositionCabel();
         AddSparksEffect();
         ChangeWeather();
@@ -66,17 +58,38 @@ public class ScenarioOPN : MonoBehaviour
     {
 
     }
+
     public void ChangePositionCabel()
     {
-        cabel.localPosition = cabelPositionNew;
-        cabelChildFront.localPosition = cabelChildPositionNew;
-        cabelChildBack.localPosition = cabelChildPositionNew;
+        cabelPoint.localPosition = newCabelPointPosition;
     }
 
     public void AddSparksEffect()
     {
-        GameObject sparksClone = Instantiate(sparks, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
-        sparksClone.transform.SetParent(cabel);
-        sparksClone.transform.localPosition = sparksPositionNew;
+        sparks.SetActive(true);
+    }
+
+    public void OnWarningSignaling()
+    {
+        WarningSignaling.enabled = true;
+    }
+
+    public void InitStateIndicators()
+    {
+        foreach (Renderer indicator in indicators)
+            indicator.material = indicatorOn;
+    }
+
+    IEnumerator Delay()
+    {
+        ToggleStateWindowTransition(true);
+        DangerObject.SetActive(true);
+        DeathObject.SetActive(true);
+        NextStepScenarioOPN.SetActive(false);
+        scenarioOPNPhoneBlockedStep = 2;
+        yield return new WaitForSeconds(5);
+        ToggleStateWindowTransition(false);
+        OnWarningSignaling();
+        InitStateIndicators();
     }
 }

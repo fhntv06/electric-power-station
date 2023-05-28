@@ -1,28 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EditorTaskController : MonoBehaviour
 {
-    public Text descriptionTask;
-    public Text commonInfo;
+   
     public GlobalVariables GlobalVariables;
+    public GlobalNavigation GlobalNavigation;
+
+    public Transform descriptionTask;
+    public Text commonInfoTask;
 
     public GameObject notificationTask;
     public GameObject plus;
 
-    public void SetTaskScenarioOPN()
+    public GameObject prefabText;
+
+    public void SetTaskScenario()
     {
-        descriptionTask.text = "1. Выполните обход территории. \n2. Выполните осмотр ОПН - 220кВ первой линии.";
-        commonInfo.text = "Вчера была проведена установка ОПН - 220 кВ первой линии. Удостоверьтесь, что ОПН - 220 кВ первой линии исправен.";
+        string description = "";
+        string commonInfo = "";
+        switch(ScenarioOPN.scenarioOPNPhoneBlockedStep)
+        {
+            case 0:
+                description = GlobalVariables.TasksList.list[GlobalVariables.TASK_ID].description_1;
+                commonInfo = GlobalVariables.TasksList.list[GlobalVariables.TASK_ID].commonInfo_1;
+                break;
+            case 2:
+                description = GlobalVariables.TasksList.list[GlobalVariables.TASK_ID].description_2;
+                commonInfo = GlobalVariables.TasksList.list[GlobalVariables.TASK_ID].commonInfo_2;
+                break;
+        }
+
+        ClearDescription();
+
+        string[] texts = description.Split('\n');
+        foreach (string p in texts)
+        {
+            Transform paragraph = Instantiate(prefabText, new Vector3(0, 0, 0), Quaternion.identity).transform;
+            paragraph.GetComponent<Text>().text = p;
+            paragraph.SetParent(descriptionTask);
+        }
+
+        commonInfoTask.text = commonInfo;
         SetTask();
+
+        ScenarioOPN.scenarioOPNPhoneBlockedStep += 1;
     }
+
+    void ClearDescription()
+    {
+        foreach (Transform child in descriptionTask) Destroy(child.gameObject);
+    }
+
     void SetTask()
     {
-        GlobalVariables.PAUSE_WINDOW.SetActive(!GlobalVariables.PAUSE_WINDOW.activeSelf);
+        GlobalNavigation.SwitcherContentPauseWindow("Tasks");
         notificationTask.SetActive(true);
-
         StartCoroutine(HiddenNotificationTask());
     }
     IEnumerator HiddenNotificationTask()
