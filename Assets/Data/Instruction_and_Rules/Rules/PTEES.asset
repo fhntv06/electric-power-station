@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PTEES
   m_EditorClassIdentifier: 
   id: 0
-  titleBig: "\u041F\u0422\u042D\u042D\u0421"
+  title: "\u041F\u0422\u042D\u042D\u0421"
   titlesSmall:
   - "\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A 1"
   - "\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A 2"
@@ -21,3 +21,4 @@ MonoBehaviour:
   - "\u041F\u0435\u0440\u0432\u044B\u0439 \u0430\u0431\u0437\u0430\u0446"
   - "\u0412\u0442\u043E\u0440\u043E\u0439 \u0430\u0431\u0437\u0430\u0446"
   pass: 0
+  tag: Rule
