@@ -4,9 +4,10 @@ using UnityEngine.UI;
 
 public class AnswerController : MonoBehaviour
 {
+    public RulesInfringementController RuleInfringement;
+    public DataErrors DataError;
     public GameObject TextTaskComplete;
-    public GameObject openWindow;
-    public GameObject hidden;
+    public GameObject hiddenWrapper;
     public GameObject hiddenWindow;
 
     public Navigation Navigation;
@@ -21,29 +22,38 @@ public class AnswerController : MonoBehaviour
     // метод для кнопок
     // вид имени кнопки: [name]_true / false
     // имя должно оканчиваться на true / false
-    public void CheckAnswerTheQuestion()
+    public void CheckAnswerTheQuestion() // clickButton - Question_window
     {
         // подсветка ответов
         if (gameObject.name.EndsWith(trueAnswer))
+        {
             color = green;
-            StartCoroutine(TheEndTask());
-
+            hiddenWindow.GetComponent<AnswerController>().StartTransition();
+        }
 
         if (gameObject.name.EndsWith(falseAnswer))
+        {
             color = red;
+            RuleInfringement.FormingListIndexsErrorsType(DataError);
+        }
 
         gameObject.GetComponent<Button>().interactable = false;
         transform.Find("Text").GetComponent<Text>().color = color;
     }
 
     // метод для родителя кнопок
+    public void StartTransition()
+    {
+        StartCoroutine(TheEndTask());
+    }
     IEnumerator TheEndTask()
     {
         yield return new WaitForSeconds(2);
         TextTaskComplete.SetActive(true);
-        hidden.SetActive(false);
+        hiddenWrapper.SetActive(false);
         yield return new WaitForSeconds(3);
-        Navigation.OpenTargetWindow();
+        Navigation.openWindow.SetActive(true);
+        RuleInfringement.AddedErrorInListErrors();
         hiddenWindow.SetActive(false);
     }
 }

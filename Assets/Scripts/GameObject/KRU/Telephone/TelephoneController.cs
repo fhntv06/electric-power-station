@@ -14,14 +14,13 @@ public class TelephoneController : MonoBehaviour
     public void PlayRingPhone(bool onOrOff)
     {
         StartCoroutine(WaitPlayPhoneSong(onOrOff));
-
-        if (!onOrOff) EditorTaskController.SetTaskScenarioOPN();
     }
 
     IEnumerator WaitPlayPhoneSong(bool state)
     {
-        if (state) yield return new WaitForSeconds(2);
+        if (state) yield return new WaitForSeconds(3);
         GetComponent<AudioSource>().enabled = state;
+        GetComponent<AudioSource>().volume = state ? 0.2f : 0;
         indicatorRing.SetActive(state);
     }
 }

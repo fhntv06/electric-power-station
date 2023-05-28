@@ -20,6 +20,8 @@ public class Authentification : MonoBehaviour
     public List<InputField> inputFieldsRegRequest = new List<InputField>(0);
     public GameObject RequestTextErrorReg;
 
+    public FormingListController contentCardsExams;
+
     string type;
     string url = "http://substation/auth.php";
     bool emptyRequestField;
@@ -118,11 +120,8 @@ public class Authentification : MonoBehaviour
 
         if (www.error != null)
         {
-            Debug.Log("Error: " + www.error);
             yield break;
         }
-
-        Debug.Log("Server response: " + www.text);
 
         if (www.text == "1")
         {
@@ -130,7 +129,7 @@ public class Authentification : MonoBehaviour
             GlobalNavigation.CloseActiveWindow();
             GlobalNavigation.OpenNextWindow(GlobalVariables.LC_WINDOW);
             GlobalNavigation.AddWindowInHistory(GlobalVariables.LC_WINDOW);
-
+            contentCardsExams.getData();
 
         } else
         {

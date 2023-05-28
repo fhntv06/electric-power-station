@@ -6,10 +6,13 @@ public class GlobalInit : MonoBehaviour
 {
     public GlobalVariables GlobalVariables;
     public GlobalNavigation GlobalNavigation;
+    public GlobalSettings GlobalSettings;
+
     public GameObject StartingWindow;
 
-    private void Start()
+    void Awake()
     {
         GlobalNavigation.AddWindowInHistory(StartingWindow);
+        GlobalSettings.ReLoadGlobalSettings();
     }
 }

@@ -3,14 +3,17 @@ using UnityEngine;
 
 public class GlobalVariables : MonoBehaviour
 {
-    // Global variables user state
+    // Global variables authentification
     public bool AUTH_USER = false;
-    public int TASKID;
     public string VERIFICATION_MODE = "";
 
+    // Global variables user state
     public int USER_ID;
-    public float USER_BALLS;
-    public float USER_MAX_AWARD = 5;
+    public int USER_BALLS;
+    public int USER_MAX_BALLS_METRIC = 100;
+    public int USER_VOLUME_ERRORS;
+    public int USER_MAX_AWARD = 5;
+    public int USER_AWARD;
     public bool USER_FREEZE;
     public bool USER_IN_DEATH_ZONE;
 
@@ -23,16 +26,25 @@ public class GlobalVariables : MonoBehaviour
     public GameObject WARNING_DEATH_WINDOW;
     public GameObject DEATH_WINDOW;
     public GameObject PAUSE_WINDOW;
+    public Transform PAUSE_WINDOW_CONTENT;
+    public GameObject CameraWindow;
 
-    // Global task mode
+    // Global variables task 
+    public int TASK_ID;
     public string TASK_MODE;
     public string TEST_MODE = "testMode";
     public string EXAM_MODE = "examMode";
-    public float TASK_BALLS;
+    public int TASK_BALLS;
+    public string TASK_TYPE;
 
 
     // Global data
-    public List<DataTasks> DATA_TASKS = new List<DataTasks>(0);
-    public List<DataRule> DATA_INSTRUCTION_AND_RULE = new List<DataRule>(0);
+    public TasksList TasksList;
+    public ErrorList ErrorList;
+    public InstructionAndRuleList InstructionAndRuleList;
+    public string URL_DATA = "http://substation/data.php";
+
+    // Substation
+    public Transform Substation;
 
 }

@@ -6,17 +6,25 @@ using UnityEngine;
 
 public class GenerationCabel : MonoBehaviour
 {
+    public Transform pointTo;
+
     public int steps = 100;
     public float radius;
     public bool invertNormals;
 
+    void Update()
+    {
+        Generate();
+    }
+
     void Generate()
     {
-        Transform tp1 = transform;
-        Transform tp2 = transform.Find("Cabel");
-
         Vector3 p1 = Vector3.zero;
-        Vector3 p2 = tp2.position - tp1.position;
+        Vector3 p2 = pointTo.position - transform.position;
+
+
+        print(p1);
+        print(p2);
 
         // для определения поворота
         Vector3 projectOnPlane = Vector3.ProjectOnPlane(p2 - p1, Vector3.up);
@@ -26,7 +34,7 @@ public class GenerationCabel : MonoBehaviour
         float height = Mathf.Abs(p2.y);
 
         Mesh m = new Mesh();
-        List<Vector3> vertices = new List<Vector3>(0);
+        List<Vector3> vertices = new List<Vector3>(steps);
 
         float nSign = invertNormals ? -1f : 1f;
 
@@ -49,13 +57,13 @@ public class GenerationCabel : MonoBehaviour
         }
 
         List<int> triangles = new List<int>(0);
-        
+
         for (int i = 2; i < vertices.Count - 2; i += 2)
         {
             triangles.Add(i);
             triangles.Add(i + 3);
             triangles.Add(i + 1);
-        
+
             triangles.Add(i);
             triangles.Add(i + 2);
             triangles.Add(i + 3);
@@ -67,9 +75,5 @@ public class GenerationCabel : MonoBehaviour
 
         transform.GetComponent<MeshFilter>().mesh = m;
     }
-
-    private void Update()
-    {
-        Generate();
-    }
 }
+

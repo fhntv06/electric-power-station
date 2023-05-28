@@ -11,13 +11,13 @@ public class ViewTextController : MonoBehaviour
 
     public DataRule DataRule;
 
-    // пример prefab titleBig
+    // пїЅпїЅпїЅпїЅпїЅпїЅ prefab titleBig
     public GameObject prefabTitleBig;
 
-    // пример prefab titleSmall
+    // пїЅпїЅпїЅпїЅпїЅпїЅ prefab titleSmall
     public GameObject prefabTitleSmall;
 
-    // пример prefab text
+    // пїЅпїЅпїЅпїЅпїЅпїЅ prefab text
     public GameObject prefabText;
 
     public Transform toggle;
@@ -27,10 +27,10 @@ public class ViewTextController : MonoBehaviour
 
     void FormingText(string text, GameObject prefab)
     {
-        GameObject newText = Instantiate(prefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
-        newText.transform.localScale = new Vector3(1, 1, 1);
+        Transform newText = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity).transform;
+        newText.localScale = new Vector3(1, 1, 1);
         newText.GetComponent<Text>().text = text.Replace(replaceHim, endLine);
-        newText.transform.SetParent(content);
+        newText.SetParent(content);
     }
     
     public void InsertDataContent(int indexToggleBtn)
@@ -38,7 +38,7 @@ public class ViewTextController : MonoBehaviour
         foreach (Transform text in content)
             Destroy(text.gameObject);
 
-        FormingText(DataRule.titleBig, prefabTitleBig);
+        FormingText(DataRule.Title, prefabTitleBig);
 
         int count = 0;
         foreach (Transform item in toggle.Find("Btns"))

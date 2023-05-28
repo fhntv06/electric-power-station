@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
-using System;
+using UnityEngine.UI;
 
 // File includes methods for just action button
 public class Navigation : MonoBehaviour
@@ -12,42 +12,45 @@ public class Navigation : MonoBehaviour
     public GlobalNavigation GlobalNavigation;
     public GlobalVariables GlobalVariables;
 
-    string urlData = "http://substation/data.php";
-
     public void OpenScene()
     {
         int id = System.Convert.ToInt32((gameObject.name[gameObject.name.Length - 1].ToString()));
 
         // SceneManager.LoadScene("Substation");
-        foreach (Transform child in GameObject.Find("Substation").transform)
+        foreach (Transform child in GlobalVariables.Substation)
             child.gameObject.SetActive(true);
 
-        GlobalVariables.TASKID = id;
-        GlobalVariables.TASK_BALLS = GlobalVariables.DATA_TASKS[id].balls;
-        GlobalVariables.USER_BALLS = GlobalVariables.TASK_BALLS; // in zone minus ball
         GameObject.Find("CameraWindow").SetActive(false);
         GlobalNavigation.CloseActiveWindow();
+
+        if (GlobalVariables.TASK_MODE == GlobalVariables.EXAM_MODE)
+        {
+            GlobalVariables.TASK_ID = id;
+            GlobalVariables.TASK_BALLS = GlobalVariables.TasksList.list[id].balls;
+
+            GlobalVariables.TASK_TYPE = GlobalVariables.TasksList.list[id].type;
+            GameObject.Find(GlobalVariables.TASK_TYPE).SetActive(true);
+
+            GlobalVariables.USER_BALLS = GlobalVariables.TASK_BALLS; // in zone minus ball
+        }
     }
     public void CloseScene()
     {
-        GameObject.Find("Substation").SetActive(false);
-        GameObject.Find("CameraWindow").SetActive(true);
+        foreach (Transform child in GlobalVariables.Substation)
+            child.gameObject.SetActive(false);
+
+        GameObject.Find(GlobalVariables.TASK_TYPE).SetActive(false);
+        GlobalVariables.CameraWindow.SetActive(true);
     }
     public void OpenWindowOnlyAuth()
     {
-        GameObject window;
-
         if (GlobalVariables.AUTH_USER == false)
         {
-            window = AuthAndRegWindow;
+            OpenWindow(AuthAndRegWindow);
             GlobalVariables.HISTORY_WINDOW.Clear();
         }
-        else
-        {
-            window = openWindow;
-        }
 
-        OpenWindow(window);
+        OpenWindow(openWindow);
     }
 
     public void OpenTargetWindow()
@@ -80,13 +83,14 @@ public class Navigation : MonoBehaviour
 
     public void SetProgressTask()
     {
+        openWindow.SetActive(true);
+        GlobalVariables.USER_FREEZE = true;
         StartCoroutine(PassTask());
     }
 
     public IEnumerator PassTask()
     {
-        string url = urlData + "?action=post&type=tasks&field=pass&value=1&id=" + GlobalVariables.TASKID;
-        print(url);
+        string url = GlobalVariables.URL_DATA + "?action=post&type=tasks&field=pass&value=1&id=" + GlobalVariables.TASK_ID;
         UnityWebRequest request = UnityWebRequest.Get(url);
         yield return request.SendWebRequest();
     }
