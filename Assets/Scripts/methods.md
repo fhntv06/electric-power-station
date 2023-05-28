@@ -55,6 +55,7 @@
   <h4>Пример:</h4>
   <p>Присвоено значение в новый объект. При присвоении Instantiate новому игровому объекту в конце дописывается "as GameObject"</p>
   <pre>GameObject newObject = Instantiate(obj, new Vector3(0, 5, 5), Quaternion.Euler(12f, -15f, 40f)) as GameObject;</pre>
+  <p>Для простого добавления объекта, например, на Canvas для Quaternion нужно использовать: <i>Quaternion.identity</i></p>
   
 ### OnCollisionEnter(Collision other) 
 <blockquote id="OnCollisionEnter">
@@ -123,7 +124,7 @@
     Метод дает возможность вращать объекты.
   </blockquote>
   <b>Синтаксис:<b> 
-  <b><pre>[GameObject].Rotate(new Vector3(x, y, z) * [например домножение на ускорение или коэффициент]);</pre></b>
+  <b><pre>[GameObject].transform.Rotate(new Vector3(x, y, z) * [например домножение на ускорение или коэффициент]);</pre></b>
   <blockquote>Коэффициент будет изменять только те координаты, значение которых отлично от 0.</blockquote>
 
 ### Translate()
