@@ -15,4 +15,9 @@ public class GlobalInit : MonoBehaviour
         GlobalNavigation.AddWindowInHistory(StartingWindow);
         GlobalSettings.ReLoadGlobalSettings();
     }
+
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
 }
