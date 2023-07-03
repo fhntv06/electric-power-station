@@ -15,8 +15,14 @@ public class CameraController : MonoBehaviour
     float mouseX;
     float mouseY;
 
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
+
     void Update()
     {
+        Cursor.visible = false;
         if (!GlobalVariables.USER_FREEZE)
         {
             mouseX = Input.GetAxis("Mouse X") * SENSIVITY_MOUSE * Time.deltaTime;

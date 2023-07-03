@@ -18,7 +18,7 @@ public class MoveController : MonoBehaviour
     private KeyCode keySpeedUpMove = GlobalInputController.speedUp;
     private KeyCode keyActivePauseWindow = GlobalInputController.activePauseWindow;
 
-    void Update()
+    void FixedUpdate()
     {
         if (!GlobalVariables.USER_FREEZE)
         {
