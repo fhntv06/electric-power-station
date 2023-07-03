@@ -24,7 +24,7 @@ public class SwitcherElectricController : MonoBehaviour
         if (lampOff != null)
             lampOff.material = state ? materialOffOff : materialOffOn;
 
-        transform.eulerAngles = new Vector3(state ? -45f : 45f, 90f, 0);
+        transform.localRotation = Quaternion.Euler(state ? -45f : 45f, 0, 0);
         if (TypeElectricObject == "razedinitel") AnimationRazedinitel(state);
     }
     void AnimationRazedinitel(bool state)

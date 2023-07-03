@@ -1,11 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
-using UnityEngine.EventSystems;
-using UnityEditor.PackageManager.Requests;
 
 public class FormingListController : MonoBehaviour
 {
