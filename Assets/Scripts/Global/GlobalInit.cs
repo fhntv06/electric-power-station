@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GlobalInit : MonoBehaviour
@@ -16,8 +14,5 @@ public class GlobalInit : MonoBehaviour
         GlobalSettings.ReLoadGlobalSettings();
     }
 
-    private void Start()
-    {
-        Cursor.visible = false;
-    }
+    //     Cursor.visible = false;
 }

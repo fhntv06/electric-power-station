@@ -23,8 +23,9 @@ public class Authentification : MonoBehaviour
     public FormingListController contentCardsExams;
 
     string type;
-    string url = "http://substation/auth.php";
     bool emptyRequestField;
+
+    // method for change autherization
     public void Auth()
     {
         emptyRequestField = RequestField(inputFieldsAuthRequest);
@@ -34,7 +35,8 @@ public class Authentification : MonoBehaviour
             StartCoroutine(SendCoroutine());
         }
     }
-
+        
+    // method for change registration
     public void Reg()
     {
         emptyRequestField = RequestField(inputFieldsRegRequest);
@@ -46,6 +48,7 @@ public class Authentification : MonoBehaviour
         }
     }
 
+    // method for checked required fields
     bool RequestField(List<InputField> inputFields)
     {
         bool notError = true;
@@ -55,16 +58,12 @@ public class Authentification : MonoBehaviour
             {
                 notError = false;
                 field.transform.Find("error").gameObject.SetActive(true);
-                // �������� ����� "���� �� ���������"
             } else
             {
-                // �� �������� ValidField
-                // notError = ValidField(field.text, field.name);
                 field.transform.Find("error").gameObject.SetActive(false);
 
                 if (!notError)
                 {
-                    // �������� ����� "������� ..."
                     field.transform.Find("valid").gameObject.SetActive(true);
                 } else
                 {
@@ -109,13 +108,11 @@ public class Authentification : MonoBehaviour
 
 
         foreach (InputField field in inputField)
-        {
             form.AddField(field.name, field.text);
-        }
 
         form.AddField("type", type);
 
-        WWW www = new WWW(url, form);
+        WWW www = new WWW(GlobalVariables.URL_AUTH, form);
         yield return www;
 
         if (www.error != null)

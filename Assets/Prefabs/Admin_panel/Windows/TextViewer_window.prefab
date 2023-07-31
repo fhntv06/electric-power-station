@@ -297,6 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openWindow: {fileID: 0}
+  AuthAndRegWindow: {fileID: 0}
   GlobalNavigation: {fileID: 0}
   GlobalVariables: {fileID: 0}
 --- !u!114 &3746290944896159573
@@ -311,16 +312,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee0637bd41276e478fa227617b9b5e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GlobalVariables: {fileID: 0}
+  GlobalNavigation: {fileID: 0}
+  MethodsResponse: {fileID: 0}
   prefabCard: {fileID: 0}
   message: {fileID: 0}
   preloader: {fileID: 0}
-  contentTextView: {fileID: 0}
-  toggle: {fileID: 0}
   parentCard: {fileID: 0}
-  openWindow: {fileID: 0}
-  GlobalNavigation: {fileID: 0}
-  listObjects: []
+  parentButtons: {fileID: 0}
+  toggle: {fileID: 0}
+  SortingController: {fileID: 0}
+  TextViewWindow: {fileID: 0}
+  contentText: {fileID: 0}
   whatDataType: 
+  emptyText: 
+  errorText: 
+  errorTypeDataText: 
 --- !u!1 &3746290945043278251
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openWindow: {fileID: 0}
+  AuthAndRegWindow: {fileID: 0}
   GlobalNavigation: {fileID: 0}
   GlobalVariables: {fileID: 0}
 --- !u!1 &3746290945253540220
@@ -814,6 +822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openWindow: {fileID: 0}
+  AuthAndRegWindow: {fileID: 0}
   GlobalNavigation: {fileID: 0}
   GlobalVariables: {fileID: 0}
 --- !u!1 &3746290945289511490
@@ -1785,6 +1794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openWindow: {fileID: 0}
+  AuthAndRegWindow: {fileID: 0}
   GlobalNavigation: {fileID: 0}
   GlobalVariables: {fileID: 0}
 --- !u!1 &3746290945826055620
@@ -3478,6 +3488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openWindow: {fileID: 0}
+  AuthAndRegWindow: {fileID: 0}
   GlobalNavigation: {fileID: 0}
   GlobalVariables: {fileID: 0}
 --- !u!1 &3746290946932539963

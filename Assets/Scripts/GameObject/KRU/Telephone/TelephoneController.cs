@@ -9,6 +9,7 @@ public class TelephoneController : MonoBehaviour
     public EditorTaskController EditorTaskController;
     private void Start()
     {
+        // включение рингтона телефона при загрузке сцены
         PlayRingPhone(true);
     }
     public void PlayRingPhone(bool onOrOff)

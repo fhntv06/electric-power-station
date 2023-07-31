@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 8935985878050613871}
   - component: {fileID: 8935985878050613870}
   - component: {fileID: 8519445907587071577}
+  - component: {fileID: 5217689511474985012}
   m_Layer: 0
   m_Name: BtnView
   m_TagString: Untagged
@@ -336,6 +337,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee0637bd41276e478fa227617b9b5e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GlobalVariables: {fileID: 0}
+  GlobalNavigation: {fileID: 0}
+  MethodsResponse: {fileID: 0}
   prefabCard: {fileID: 0}
   message: {fileID: 0}
   preloader: {fileID: 0}
@@ -343,10 +347,28 @@ MonoBehaviour:
   parentButtons: {fileID: 0}
   toggle: {fileID: 0}
   SortingController: {fileID: 0}
-  listObjects:
-  - {fileID: 11400000, guid: 984a887013d9c754d904c07e8a88e1b4, type: 2}
-  - {fileID: 11400000, guid: 52e0be0ab853af54cab6e3282ae4f9c4, type: 2}
+  TextViewWindow: {fileID: 0}
+  contentText: {fileID: 0}
   whatDataType: 
+  emptyText: 
+  errorText: 
+  errorTypeDataText: 
+--- !u!114 &5217689511474985012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8935985878050613872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fe91b324fdb7a478f685465ba525f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openWindow: {fileID: 0}
+  AuthAndRegWindow: {fileID: 0}
+  GlobalNavigation: {fileID: 0}
+  GlobalVariables: {fileID: 0}
 --- !u!1 &8935985878318154946
 GameObject:
   m_ObjectHideFlags: 0

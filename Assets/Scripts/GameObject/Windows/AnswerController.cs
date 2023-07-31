@@ -24,12 +24,12 @@ public class AnswerController : MonoBehaviour
     Color32 green = new Color32(45, 255, 0, 255);
 
     // метод для кнопок
-    // вид имени кнопки: [name]_true / false
-    // имя должно оканчиваться на true / false
+    // example view name button: [name]_true / false
+    // name must end for true or false
     public void CheckAnswerTheQuestion() // clickButton - Question_window
     {
         string name = gameObject.name;
-        // подсветка ответов
+        // coloring answers
         if (name.EndsWith(trueAnswer))
         {
             color = green;
@@ -54,12 +54,13 @@ public class AnswerController : MonoBehaviour
     {
         List<Transform> arButtonNotCheck = new List<Transform>(5);
 
+        // checked all buttons
         foreach (Transform child in transform)
             foreach (string buttonName in arCheckButtons)
                 if (buttonName != child.name)
                     arButtonNotCheck.Add(child);
 
-
+        // checked when person don't click for button
         foreach (Transform button in arButtonNotCheck)
         {
             print("Попала в arButtonNotCheck: " + button.name);
@@ -74,8 +75,7 @@ public class AnswerController : MonoBehaviour
     }
 
 
-
-    // метод для родителя кнопок
+    // method for parent button
     public void StartTransition()
     {
         StartCoroutine(TheEndTask());

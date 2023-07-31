@@ -37,12 +37,15 @@ public class GlobalVariables : MonoBehaviour
     public int TASK_BALLS;
     public string TASK_TYPE;
 
-
     // Global data
     public TasksList TasksList;
     public ErrorList ErrorList;
     public InstructionAndRuleList InstructionAndRuleList;
-    public string URL_DATA = "http://substation/data.php";
+
+    // Global variables connect to database
+    static string HOST = "http://substation/";
+    public string URL_DATA = HOST + "data.php";
+    public string URL_AUTH = HOST + "auth.php";
 
     // Substation
     public Transform Substation;

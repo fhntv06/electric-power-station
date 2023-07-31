@@ -47,8 +47,10 @@ public class FormingListController : MonoBehaviour
         message.SetActive(false);
         preloader.SetActive(true);
 
-        foreach (Transform card in parentCard)
-            Destroy(card.gameObject);
+        /*
+            foreach (Transform card in parentCard)
+                Destroy(card.gameObject);
+        */
 
         string otherParams = "";
         if (whatDataType == "exams")
@@ -105,6 +107,7 @@ public class FormingListController : MonoBehaviour
                 Transform BtnView = newCard.Find("BtnView");
                 BtnView.GetComponent<FormingListController>().parentButtons = parentButtons;
                 BtnView.GetComponent<FormingListController>().GlobalVariables = GlobalVariables;
+                BtnView.GetComponent<Navigation>().openWindow = TextViewWindow;
                 BtnView.GetComponent<Button>().onClick.AddListener(delegate { void wrapperMethod() { ReadId(); } });
 
                 switch (whatDataType)
@@ -133,33 +136,32 @@ public class FormingListController : MonoBehaviour
     {
         Text Award = newCard.Find("Award").GetComponent<Text>();
         Text Result = newCard.Find("Result").GetComponent<Text>();
-        print(card.task);
         Title.text = GlobalVariables.TasksList.list[card.task].title;
 
         Result.text = GlobalVariables.USER_MAX_BALLS_METRIC / GlobalVariables.USER_MAX_AWARD * card.award + " / " + GlobalVariables.USER_MAX_BALLS_METRIC;
         Award.text = card.award.ToString();
-        
+
+        Color color = new Color(255, 255, 255);
         switch (card.award)
         {
             case 5:
-                Result.color = fiveAwardColor;
-                Award.color = fiveAwardColor;
+                color = fiveAwardColor;
                 break;
             case 4:
-                Result.color = fourAwardColor;
-                Award.color = fourAwardColor;
+                color = fourAwardColor;
                 break;
             case 3:
-                Result.color = threeAwardColor;
-                Award.color = threeAwardColor;
+                color = threeAwardColor;
                 break;
             case 2:
             case 1:
             case 0:
-                Result.color = twoAwardColor;
-                Award.color = twoAwardColor;
+                color = twoAwardColor;
                 break;
         }
+
+        Result.color = color;
+        Award.color = color;
 
         newCard.Find("Number").GetComponent<Text>().text = (card.id + 1).ToString();
     }
@@ -188,6 +190,8 @@ public class FormingListController : MonoBehaviour
     }
     public void ReadId()
     {
+        // get last parent of number, example Rule_0
+        // id = 0
         string name = gameObject.transform.parent.name;
         int indexId = name.IndexOf("_");
         string id = name.Substring(indexId + 1);

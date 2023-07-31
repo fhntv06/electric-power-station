@@ -14,30 +14,42 @@ public class Navigation : MonoBehaviour
 
     public void OpenScene()
     {
+        // get last number like id
+        // forming id in step change task
         int id = System.Convert.ToInt32((gameObject.name[gameObject.name.Length - 1].ToString()));
 
         // SceneManager.LoadScene("Substation");
+        /*
         foreach (Transform child in GlobalVariables.Substation)
             child.gameObject.SetActive(true);
+       */
 
-        GameObject.Find("CameraWindow").SetActive(false);
+        // GlobalVariables.Substation - variables have source for gameObject main station scene
+        // you are can create several scene or station and activated for id
+        GlobalVariables.Substation.gameObject.SetActive(true);
+
+        GlobalVariables.CameraWindow.SetActive(false);
         GlobalNavigation.CloseActiveWindow();
 
-        if (GlobalVariables.TASK_MODE == GlobalVariables.EXAM_MODE)
-        {
-            GlobalVariables.TASK_ID = id;
-            GlobalVariables.TASK_BALLS = GlobalVariables.TasksList.list[id].balls;
+        // split execution logic task modes
+        // if (GlobalVariables.TASK_MODE != GlobalVariables.EXAM_MODE) return;
 
-            GlobalVariables.TASK_TYPE = GlobalVariables.TasksList.list[id].type;
-            GameObject.Find(GlobalVariables.TASK_TYPE).SetActive(true);
+        GlobalVariables.TASK_ID = id;
+        GlobalVariables.TASK_BALLS = GlobalVariables.TasksList.list[id].balls;
 
-            GlobalVariables.USER_BALLS = GlobalVariables.TASK_BALLS; // in zone minus ball
-        }
+        GlobalVariables.TASK_TYPE = GlobalVariables.TasksList.list[id].type;
+        GameObject.Find(GlobalVariables.TASK_TYPE).SetActive(true);
+
+        GlobalVariables.USER_BALLS = GlobalVariables.TASK_BALLS; // in zone minus ball
     }
     public void CloseScene()
     {
+        /*
         foreach (Transform child in GlobalVariables.Substation)
             child.gameObject.SetActive(false);
+        */
+
+        GlobalVariables.Substation.gameObject.SetActive(true);
 
         GameObject.Find(GlobalVariables.TASK_TYPE).SetActive(false);
         GlobalVariables.CameraWindow.SetActive(true);
@@ -48,18 +60,33 @@ public class Navigation : MonoBehaviour
         {
             OpenWindow(AuthAndRegWindow);
             GlobalVariables.HISTORY_WINDOW.Clear();
+            return;
         }
 
-        OpenWindow(openWindow);
+        GameObject LCWindow = GlobalVariables.LC_WINDOW;
+        Transform contentCardLCWindow = LCWindow.transform.Find("Wrapper/Content/Scroll View/Viewport/Content");
+
+        OpenWindow(LCWindow);
+
+        contentCardLCWindow.GetComponent<FormingListController>().getData();
     }
 
-    public void OpenTargetWindow()
+    // method for click in navigation buttons on Windows
+    public void OpenTargetWindow(GameObject window)
     {
-        OpenWindow(openWindow);
+        if (window)
+        {
+            OpenWindow(window);
+        }
+        else
+        {
+            OpenWindow(openWindow);
+        }
     }
 
     void OpenWindow(GameObject window)
     {
+
         GlobalNavigation.CloseActiveWindow();
 
         GlobalNavigation.AddWindowInHistory(window);
@@ -67,15 +94,19 @@ public class Navigation : MonoBehaviour
     }
     
 
+    // SetMode: exams or testing
     public void SetMode(string mode)
     {
         GlobalNavigation.ReplaceGlobalVariablesTaskMode(mode);
     }
 
+    // SetMode testing
     public void SetTestTaskMode()
     {
         GlobalNavigation.ReplaceGlobalVariablesTaskMode(GlobalVariables.TEST_MODE);
     }
+
+    // SetMode exams
     public void SetExamTaskMode()
     {
         GlobalNavigation.ReplaceGlobalVariablesTaskMode(GlobalVariables.EXAM_MODE);
