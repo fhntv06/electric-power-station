@@ -50,11 +50,11 @@ public class ScenarioOPN : MonoBehaviour
         ChangeLigth();
     }
 
-    public void ChangeWeather() // плохая погода
+    public void ChangeWeather() // плохая погода - change wearthe
     {
 
     }
-    public void ChangeLigth() // ночь на дворе
+    public void ChangeLigth() // ночь на дворе - night
     {
 
     }

@@ -44,8 +44,8 @@ public class GlobalVariables : MonoBehaviour
 
     // Global variables connect to database
     static string HOST = "http://substation/";
-    public string URL_DATA = HOST + "data.php";
-    public string URL_AUTH = HOST + "auth.php";
+    static public string URL_DATA = HOST + "data.php";
+    static public string URL_AUTH = HOST + "auth.php";
 
     // Substation
     public Transform Substation;

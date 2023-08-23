@@ -27,6 +27,7 @@ public class Navigation : MonoBehaviour
         // GlobalVariables.Substation - variables have source for gameObject main station scene
         // you are can create several scene or station and activated for id
         GlobalVariables.Substation.gameObject.SetActive(true);
+        GlobalNavigation.SetCursorState(false);
 
         GlobalVariables.CameraWindow.SetActive(false);
         GlobalNavigation.CloseActiveWindow();

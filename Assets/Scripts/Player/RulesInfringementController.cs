@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,11 +33,9 @@ public class RulesInfringementController : MonoBehaviour
         {
             RuleEntrance.SetActive(state);
             RuleEntrance.transform.Find("Text").GetComponent<Text>().text = Error.Title;
-
         }
 
-        if (state == true)
-            FormingListIndexsErrorsType(Error);
+        if (state == true) FormingListIndexsErrorsType(Error);
     }
 
     public void FormingListIndexsErrorsType(DataErrors error)
@@ -52,33 +49,44 @@ public class RulesInfringementController : MonoBehaviour
     }
 
 
+    // forming list errors
     public void AddedErrorInListErrors()
     {
         ClearListError();
         BallsAction.CalcAward();
+        FormingInfoTask();
 
+        if (arIndexsErrorsType.Count == 0)
+            CompletedNotError();
+        else
+            CompletedWithError();
+    }
+
+    void FormingInfoTask()
+    {
         InfoTask.Find("NameTask").GetComponent<Text>().text = GlobalVariables.TasksList.list[GlobalVariables.TASK_ID].Title;
         InfoTask.Find("LVLTask").GetComponent<Text>().text = "<b>Уровень сложности</b>: " + GlobalVariables.TasksList.list[GlobalVariables.TASK_ID].Level;
         InfoTask.Find("VolumeError").GetComponent<Text>().text = "<b>Количество ошибок</b>: " + GlobalVariables.USER_VOLUME_ERRORS;
         InfoTask.Find("Award").GetComponent<Text>().text = "<b>Оценка</b>: " + GlobalVariables.USER_AWARD;
-
-        if (arIndexsErrorsType.Count > 0)
-        {
-            foreach (int index in arIndexsErrorsType)
-            {
-                Transform error = Instantiate(prefabError, new Vector3(0, 0, 0), Quaternion.identity).transform;
-                error.Find("Title").GetComponent<Text>().text = GlobalVariables.ErrorList.list[index].Title;
-                error.Find("Desctiption").GetComponent<Text>().text = GlobalVariables.ErrorList.list[index].Description;
-                error.Find("Rule").GetComponent<Text>().text = GlobalVariables.ErrorList.list[index].Rule;
-                error.SetParent(ListErrors);
-            }
-        } else
+    }
+    void CompletedWithError()
+    {
+        foreach (int index in arIndexsErrorsType)
         {
             Transform error = Instantiate(prefabError, new Vector3(0, 0, 0), Quaternion.identity).transform;
-            error.Find("Title").GetComponent<Text>().text = "Задание выполнено без ошибок!";
-            error.localScale = Vector3.one;
+            error.Find("Title").GetComponent<Text>().text = GlobalVariables.ErrorList.list[index].Title;
+            error.Find("Desctiption").GetComponent<Text>().text = GlobalVariables.ErrorList.list[index].Description;
+            error.Find("Rule").GetComponent<Text>().text = GlobalVariables.ErrorList.list[index].Rule;
             error.SetParent(ListErrors);
         }
+    }
+
+    void CompletedNotError()
+    {
+        Transform error = Instantiate(prefabError, new Vector3(0, 0, 0), Quaternion.identity).transform;
+        error.Find("Title").GetComponent<Text>().text = "Задание выполнено без ошибок!";
+        error.localScale = Vector3.one;
+        error.SetParent(ListErrors);
     }
 
     public void ClearListError()
@@ -87,6 +95,7 @@ public class RulesInfringementController : MonoBehaviour
             Destroy(child.gameObject);
     }
 
+    // showed tablet with error
     IEnumerator ShowRuleEntranceError(DataErrors error)
     {
         yield return new WaitForSeconds(.5f);

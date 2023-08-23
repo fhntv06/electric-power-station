@@ -45,6 +45,8 @@ public class GlobalNavigation : MonoBehaviour
     {
         GlobalVariables.PAUSE_WINDOW.SetActive(state);
         GlobalVariables.USER_FREEZE = state;
+
+        SetCursorState(state);
     }
     public void SwitcherContentPauseWindow(string targetName)
     {
@@ -60,8 +62,12 @@ public class GlobalNavigation : MonoBehaviour
             }
         }
     }
-    public void Quit()
-    {
+
+    public void Quit(){
         Application.Quit();
+    }
+
+    public void SetCursorState(bool state) {
+        Cursor.visible = state;
     }
 }

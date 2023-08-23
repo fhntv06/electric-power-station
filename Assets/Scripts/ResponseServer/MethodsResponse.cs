@@ -6,7 +6,7 @@ public class MethodsResponse : MonoBehaviour
 {
     public GlobalVariables GlobalVariables;
 
-    string urlData = "http://substation/data.php";
+    string urlData = GlobalVariables.URL_DATA;
 
     UnityWebRequest request;
     public IEnumerator PostCommon(string urlData, string whatDataType, string otherParams)

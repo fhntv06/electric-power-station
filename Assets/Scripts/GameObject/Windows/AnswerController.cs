@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +42,7 @@ public class AnswerController : MonoBehaviour
             RuleInfringement.FormingListIndexsErrorsType(DataError);
         }
 
-        gameObject.GetComponent<Button>().interactable = false;
+        // gameObject.GetComponent<Button>().interactable = false;
         transform.Find("Text").GetComponent<Text>().color = color;
         btnAnswer.interactable = true;
     }
@@ -52,28 +53,17 @@ public class AnswerController : MonoBehaviour
     }
     public void EndAnswerOnQuestion()
     {
-        List<Transform> arButtonNotCheck = new List<Transform>(5);
-
         // checked all buttons
         foreach (Transform child in transform)
-            foreach (string buttonName in arCheckButtons)
-                if (buttonName != child.name)
-                    arButtonNotCheck.Add(child);
-
-        // checked when person don't click for button
-        foreach (Transform button in arButtonNotCheck)
         {
-            print("Попала в arButtonNotCheck: " + button.name);
-
-            if (button.name.EndsWith(trueAnswer))
-            {
+            bool contain = arCheckButtons.Contains(child.name);
+            if (!contain && child.name.EndsWith(trueAnswer))
                 RuleInfringement.FormingListIndexsErrorsType(DataError);
-                print("Не отмеченная: " + button.name);
-            }
         }
+
+        arCheckButtons.Clear();
         hiddenWindow.GetComponent<AnswerController>().StartTransition();
     }
-
 
     // method for parent button
     public void StartTransition()

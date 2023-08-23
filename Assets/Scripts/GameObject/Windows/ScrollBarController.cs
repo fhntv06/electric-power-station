@@ -3,10 +3,9 @@ using UnityEngine.UI;
 
 public class ScrollBarController : MonoBehaviour
 {
-    // скрипт весит на скроллбаре
+    // script set on scrollbar
 
-    // Задачи скрипта:
-    // включиет интерактивность переданным элементам
+    // added interactive in elements
     float borderScroll = 0.3f;
 
     public GameObject toggle;

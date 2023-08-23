@@ -18,7 +18,7 @@ public class MoveController : MonoBehaviour
     private KeyCode keySpeedUpMove = GlobalInputController.speedUp;
     private KeyCode keyActivePauseWindow = GlobalInputController.activePauseWindow;
 
-    void FixedUpdate()
+    void Update()
     {
         if (!GlobalVariables.USER_FREEZE)
         {
@@ -37,6 +37,7 @@ public class MoveController : MonoBehaviour
             if (Input.GetKeyDown(keySpeedUpMove)) speed *= 2;
             if (Input.GetKeyUp(keySpeedUpMove)) speed /= 2;
 
+            /*
             if (Input.GetKeyUp(keyForwardMove) || Input.GetKeyUp(keyBackMove) || Input.GetKeyUp(keyLeftMove) || Input.GetKeyUp(keyRightMove))
             {
                 SwitcherAnimation.SetTriggerStand();
@@ -48,14 +49,12 @@ public class MoveController : MonoBehaviour
                 SwitcherAnimation.SetTriggerWalk();
                 Ragdoll.ChangeIsKinematic(false);
             }
+            */
 
             transform.localPosition += newTransformPosition * speed;
         }
 
-        if (Input.GetKeyUp(keyActivePauseWindow))
-        {
-            GlobalNavigation.OpenPauseWindow(!GlobalVariables.PAUSE_WINDOW.activeSelf);
-        }
+        if (Input.GetKeyUp(keyActivePauseWindow)) GlobalNavigation.OpenPauseWindow(!GlobalVariables.PAUSE_WINDOW.activeSelf);
     }
 
     void OnTriggerEnter(Collider other)

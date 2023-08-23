@@ -25,7 +25,6 @@ public class FormingListController : MonoBehaviour
     public Transform contentText;
 
     public string whatDataType;
-    string urlData = "http://substation/data.php";
 
     public string emptyText;
     public string errorText;
@@ -39,7 +38,7 @@ public class FormingListController : MonoBehaviour
     Color twoAwardColor = new Color(255, 0, 0);
 
 
-    public void getData()
+    public void getData() // geting data for card
     {
         if (parentCard.childCount != 0)
             return;
@@ -59,7 +58,7 @@ public class FormingListController : MonoBehaviour
         if (parentCard.gameObject.activeSelf)
             StartCoroutine(GetCardCoroutine(otherParams));
     }
-    public void postPassInstruction()
+    public void postPassInstruction() // set pass instruction
     {
         string btnName = "";
         foreach (Transform child in toggle.Find("Btns"))
@@ -72,7 +71,7 @@ public class FormingListController : MonoBehaviour
         string id = btnName.Substring(indexSeparatorId + 1);
         string otherParams = "field=" + field + "&value=" + "1&" + "id=" + id;
 
-        StartCoroutine(MethodsResponse.PostCommon(urlData, whatDataType, otherParams));
+        StartCoroutine(MethodsResponse.PostCommon(GlobalVariables.URL_DATA, whatDataType, otherParams));
 
         getData();
     }
@@ -132,7 +131,7 @@ public class FormingListController : MonoBehaviour
         if (SortingController != null)
             SortingController.FormingList();
     }
-    void FormingExams(CardStruct card, Transform newCard, Text Title)
+    void FormingExams(CardStruct card, Transform newCard, Text Title) // forming card in LC
     {
         Text Award = newCard.Find("Award").GetComponent<Text>();
         Text Result = newCard.Find("Result").GetComponent<Text>();
@@ -200,7 +199,7 @@ public class FormingListController : MonoBehaviour
 
     public IEnumerator GetCardCoroutine(string otherParams)
     {
-        string url = urlData + "?action=get" + "&type=" + whatDataType + "&" + otherParams;
+        string url = GlobalVariables.URL_DATA + "?action=get" + "&type=" + whatDataType + "&" + otherParams;
         UnityWebRequest request = UnityWebRequest.Get(url);
         request.SetRequestHeader("Content-Type", "application/json");
 

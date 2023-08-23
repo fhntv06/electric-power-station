@@ -6,7 +6,6 @@ using UnityEngine;
 public class GlobalInputController : MonoBehaviour
 {
     [Header("Variable move player")]
-    // static - позволяет обращаться к переменным в любом месте кода
     // default keys
     public static KeyCode forward = KeyCode.W;
     public static KeyCode right = KeyCode.D;
